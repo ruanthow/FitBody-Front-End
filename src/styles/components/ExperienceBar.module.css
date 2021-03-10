@@ -1,0 +1,37 @@
+.experienceBar{
+    display: flex;
+    align-items: center;
+
+}
+.experienceBar span{
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+}
+.experienceBar > div{
+    flex: 1;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--gray-line);
+    margin: 0 1.5rem;
+    position: relative;
+}
+.experienceBar > div > div{
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(-90deg, rgb(65, 207, 8)  , rgb(191, 247, 138));
+    background-size: 400% 400%;
+    animation: barLine 4s ease infinite;
+}
+@keyframes barLine{
+    0%{background-position: 0% 50;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0% 50%}
+}
+
+span.currentExperience{
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+}

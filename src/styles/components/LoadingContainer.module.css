@@ -1,0 +1,27 @@
+.loadingContainer{
+    background-color:black;
+    height: 100vh;
+   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingContents svg {
+   
+    animation: moveCircle 0.7s linear infinite;
+    
+}
+
+@keyframes moveCircle {
+    from {
+      
+      transform: rotate(0deg); 
+      
+    }
+    to {
+        
+        transform: rotate(-360deg);
+    }
+  }

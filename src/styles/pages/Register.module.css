@@ -1,0 +1,98 @@
+.containerRegister{
+    height: 100vh;
+    background: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.userRegisterContainer{
+    height:100vh;
+    flex: 1;
+    box-shadow: 0 0 60px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    padding: 1.5rem 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+   
+}
+.userRegisterContents{
+    margin-bottom: 2.5rem;
+}
+.userRegisterContents button{
+    width: 20rem;
+    border: 0;
+    padding: 0.7rem;
+    border-radius: 5px;
+
+    background:rgb(17, 17, 17);
+    color: var(--white);
+    transition: 0.2s;
+}
+.userRegisterContents button:hover {
+    background: #000;
+}
+.userRegisterContents button:disabled{
+    background: var(--gray-line);
+    color: #000;
+}
+
+.userRegisterContainer form{
+    width: 100%;
+}
+.userRegisterContainer img{
+    width: 10rem;
+    height: 10rem;
+    margin: 1.5rem;
+    border-radius: 40%;
+    
+}
+.userRegisterContainer p{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.userRegisterBox{
+    background: var(--white);
+    height: 100%;
+    width: 500px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.userRegisterInput{
+    margin: 2rem;
+    padding: 0 1rem;
+    
+}
+.userRegisterInput input{
+    padding: 0.7rem;
+    width: 20rem;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    text-align: center;
+}
+.userRegisterInput input::-webkit-input-placeholder{
+    color: rgba(0,0,0,0.5);
+    font-size: 0.8rem;
+    display: flex;
+    text-align: center;
+    font-weight: 600;
+    
+}
+.userRegisterOthersLogins img{
+    height: 1.5rem;
+    width: 1.5rem;
+}
