@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "framer-motion": "^3.10.2",
+    "fs": "0.0.1-security",
     "js-cookie": "^2.2.1",
     "next": "10.0.7",
     "react": "17.0.1",

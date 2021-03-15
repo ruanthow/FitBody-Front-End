@@ -1,9 +1,13 @@
 import {UserRegister} from '../../components/UserRegister';
+import {UserRegisterProvider } from '../../contexts/UserRegisterContexts';
 
 
 export function teste(){
     return(
-        <UserRegister/>
+       <UserRegisterProvider>
+           <UserRegister/>
+       </UserRegisterProvider>
+        
     )
 }
 

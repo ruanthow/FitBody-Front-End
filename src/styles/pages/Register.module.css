@@ -36,8 +36,8 @@
     background: #000;
 }
 .userRegisterContents button:disabled{
-    background: var(--gray-line);
-    color: #000;
+    background: rgb(165, 165, 165);
+    color: #fff;
 }
 
 .userRegisterContainer form{
@@ -84,15 +84,67 @@
     box-shadow: 0 0 60px rgba(0,0,0,0.5);
     text-align: center;
 }
-.userRegisterInput input::-webkit-input-placeholder{
-    color: rgba(0,0,0,0.5);
-    font-size: 0.8rem;
-    display: flex;
-    text-align: center;
-    font-weight: 600;
-    
+
+.userRegisterInputInvalid{
+    margin: 2rem;
+    padding: 0 1rem;
 }
+.userRegisterInputInvalid input{
+   
+    padding: 0.7rem;
+    width: 20rem;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.404);
+}
+
 .userRegisterOthersLogins img{
     height: 1.5rem;
     width: 1.5rem;
+}
+.userRegisterInputInvalid span{
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: center;
+    margin-top: 5px;
+    color: rgb(255, 0, 0);
+}
+.loadingRegisterBox{
+    height: 500px;
+    width: 500px;
+
+    border-radius: 5px;
+    box-shadow: 0 0 60px  rgba(0,0,0,0.5);
+    background: var(--white);
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+.loadingRegisterContainte{
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.svgLoading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.svgLoading svg{
+   
+    height: 100px;
+    width: 100px;
+    animation: loading 0.8s linear infinite;
+}
+@keyframes loading{
+    from {
+      transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }

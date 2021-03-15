@@ -1,4 +1,4 @@
-.userRegisterContainer{
+.userLoginContainer{
     height:100vh;
     flex: 1;
     box-shadow: 0 0 60px rgba(0,0,0,0.05);
@@ -10,10 +10,10 @@
 
    
 }
-.userRegisterContents{
+.userLoginContents{
     margin-bottom: 2.5rem;
 }
-.userRegisterContents button{
+.userLoginContents button{
     width: 20rem;
     border: 0;
     padding: 0.7rem;
@@ -23,30 +23,30 @@
     color: var(--white);
     transition: 0.2s;
 }
-.userRegisterContents button:hover {
+.userLoginContents button:hover {
     background: #000;
 }
-.userRegisterContents button:disabled{
+.userLoginContents button:disabled{
     background: var(--gray-line);
     color: #000;
 }
 
-.userRegisterContainer form{
+.userLoginContainer form{
     width: 100%;
 }
-.userRegisterContainer img{
+.userLoginContainer img{
     width: 10rem;
     height: 10rem;
     margin: 1.5rem;
     border-radius: 40%;
     
 }
-.userRegisterContainer p{
+.userLoginContainer p{
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.userRegisterBox{
+.userLoginBox{
     background: var(--white);
     height: 100%;
     width: 500px;
@@ -62,12 +62,12 @@
     justify-content: center;
     text-align: center;
 }
-.userRegisterInput{
+.userLoginInput{
     margin: 2rem;
     padding: 0 1rem;
     
 }
-.userRegisterInput input{
+.userLoginInput input{
     padding: 0.7rem;
     width: 20rem;
     border-radius: 5px;
@@ -75,7 +75,7 @@
     box-shadow: 0 0 60px rgba(0,0,0,0.5);
     text-align: center;
 }
-.userRegisterInput input::-webkit-input-placeholder{
+.userLoginInput input::-webkit-input-placeholder{
     color: rgba(0,0,0,0.5);
     font-size: 0.8rem;
     display: flex;
@@ -83,7 +83,7 @@
     font-weight: 600;
     
 }
-.userRegisterOthersLogins img{
+.userLoginOthersLogins img{
     height: 1.5rem;
     width: 1.5rem;
 }
