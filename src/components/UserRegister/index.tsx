@@ -34,6 +34,11 @@ export function UserRegister(){
                 <form onSubmit={(e)=>{ 
                     ValidationAll();
                     e.preventDefault()
+                    if(iscreateUser == true){
+                        
+                        console.log("Create success");
+
+                    }
                    
                     //CreateUser();
                 }}>

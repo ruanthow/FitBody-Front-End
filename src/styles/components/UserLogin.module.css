@@ -13,6 +13,9 @@
 .userLoginContents{
     margin-bottom: 2.5rem;
 }
+.userLoginContents form{
+    margin-bottom: 1rem;
+}
 .userLoginContents button{
     width: 20rem;
     border: 0;
@@ -86,4 +89,14 @@
 .userLoginOthersLogins img{
     height: 1.5rem;
     width: 1.5rem;
+}
+.userLoginContents span{
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.userLoginContents span > a{
+    color: rgb(13, 70, 224);
+    font-size: 0.9rem;
+    font-weight: 600;
 }
