@@ -5,28 +5,44 @@ import Profile from '../components/Profile'
 import styled from '../styles/pages/Home.module.css'
 import Head from 'next/head';
 import ChallangesBox from '../components/ChallangesBox'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import UserLogin from '../components/UserLogin'
 import {GetServerSideProps} from 'next'
 import { ChallengeProvider } from '../contexts/ChallengeContexts'
 import { CountDownContextProvider } from '../contexts/CountDownContexts'
 import { UserLoginProvider } from '../contexts/UserLoginContexts'
+import Cookies from 'js-cookie'
+
+
 interface HomeProps{
-      level:number 
-      currentExperience: number
-      completeChallenge: number
+      level:number;
+      currentExperience: number;
+      completeChallenge: number;
+   
      
 }
 
-export default function Home(props : HomeProps) {
-  
-  const [validationLogin, setValidationLogin] = useState(true);
 
+
+export default function Home(props : HomeProps) {
+  const [validationLogin, setValidationLogin] = useState(false);
+
+      useEffect(()=> {
+     const data = fetch("http://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
+     .then((data)=>{
+       if(data.status == 200){
+        setValidationLogin(true);
+        console.log(data.json());
+       }
+    }).catch((e)=>{
+
+    })      
+      }, []);
 
   return (
       <> 
 
-        <UserLoginProvider validationLoginIndex={setValidationLogin} >
+        <UserLoginProvider  validationLoginIndex={setValidationLogin} >
         
         {!validationLogin ? <UserLogin/> : 
         <ChallengeProvider 
@@ -62,13 +78,14 @@ export default function Home(props : HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   
-  const {level, currentExperience, completeChallenge} = ctx.req.cookies
+  const {level, currentExperience, completeChallenge,} = ctx.req.cookies
   
   return{
     props:{
       level: Number(level),
       currentExperience:Number(currentExperience),
       completeChallenge:Number(completeChallenge),
+      
     } 
    
   }

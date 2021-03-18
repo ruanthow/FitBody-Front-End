@@ -1,6 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import md5 from 'md5';
-import { getJSON } from "js-cookie";
+import Cookies from "js-cookie";
+import { GetServerSideProps } from "next";
+import { stringify } from "node:querystring";
+
 
 interface UserLoginData{
   user:string;
@@ -12,6 +15,7 @@ interface UserLoginData{
   setIsLoading:any;
   isLoading:boolean;
   nameUser:string;
+  
 
   
 
@@ -27,27 +31,43 @@ export const UserLoginContexts = createContext({} as UserLoginData);
 
 export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
 
-
+    
     const [user, setUser] = useState();
     const [password, setPassword] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [nameUser, setNameUser] = useState();
-    
+  
+
     async function DBLOGIN() { 
          
         const body = {
         "email":user,
-        "senha":password,
+        "pwd":password,
         
+    }   
+       
+        
+        const USER = await fetch("http://fitbodyapi.herokuapp.com/auth", {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
+        const data = await USER.json();
+        Logando(USER.status);
+        Cookies.set('Token', data);
+
     }
 
-        const USER = await fetch("http://18.231.147.2:3350/login", {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
-        const data = await USER.json();
-        setNameUser(data.name)
-        Logando(USER.status);
-         console.log(USER);
-    }
-   
+  
+    
+    useEffect(() => {
+    const data = fetch("http://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
+     .then((data)=>{
+       if(data.status == 200){
+        rest.validationLoginIndex(true);
+        console.log(data.json());
+        
+       }
+    }).catch((e)=>{
+
+    })      
+    }, []);
     
     function Logando(status:number) {
         
@@ -61,6 +81,8 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
         }
     }
     
+   
+          
     
        
     
@@ -75,7 +97,8 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
             DBLOGIN,
             setIsLoading,
             isLoading,
-            nameUser
+            nameUser,
+         
             
             }}
             >

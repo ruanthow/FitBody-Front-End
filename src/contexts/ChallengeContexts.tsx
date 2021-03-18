@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import challengeBase from '../../challenge.json';
 import { LevelUpModal } from '../components/LevelUpModal';
 
+
 interface ChallengeProps{
     type: 'body' | 'eye';
     description: string;
