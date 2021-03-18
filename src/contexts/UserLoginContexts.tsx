@@ -47,7 +47,7 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
     }   
        
         
-        const USER = await fetch("http://fitbodyapi.herokuapp.com/auth", {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
+        const USER = await fetch("https://fitbodyapi.herokuapp.com/auth", {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
         const data = await USER.json();
         Logando(USER.status);
         Cookies.set('Token', data);
@@ -57,7 +57,7 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
   
     
     useEffect(() => {
-    const data = fetch("http://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
+    const data = fetch("https://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
      .then((data)=>{
        if(data.status == 200){
         rest.validationLoginIndex(true);
