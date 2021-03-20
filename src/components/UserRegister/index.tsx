@@ -2,6 +2,7 @@ import { UserRegisterContexts } from '../../contexts/UserRegisterContexts';
 import styled from '../../styles/pages/Register.module.css';
 import {useContext, useEffect, useState} from 'react';
 import { LoadingScreen } from '../LoadingScreen';
+import BackArrow from '../BackArrow';
 
 export function UserRegister(){
    
@@ -28,9 +29,11 @@ export function UserRegister(){
         <div className={styled.userRegisterContainer}>
            { !iscreateUser ?
             (<div className={styled.userRegisterBox}>
+               
                 <div className={styled.userRegisterContents}>
+                <BackArrow href="/"/>
                 <img src="logo.svg" alt=""/>
-                <p>Cadastrar</p>
+                <p>Bem vindo</p>
                 <form onSubmit={(e)=>{ 
                     ValidationAll();
                     e.preventDefault()

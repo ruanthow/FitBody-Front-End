@@ -1,0 +1,21 @@
+.Container{
+    height: 50px;
+    width: 50px;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    position: relative;
+   
+}
+.Container > img {
+    height: 40px;
+    width: 40px;
+
+    position: absolute;
+    left: -50px;
+    top:30px;
+    
+    
+}

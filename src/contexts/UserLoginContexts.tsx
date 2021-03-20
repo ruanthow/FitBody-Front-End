@@ -15,6 +15,7 @@ interface UserLoginData{
   setIsLoading:any;
   isLoading:boolean;
   nameUser:string;
+  error:boolean;
   
 
   
@@ -36,48 +37,60 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
     const [password, setPassword] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [nameUser, setNameUser] = useState();
-  
+    const [error, setError] = useState(false);
+    
+    
+
+    if(Cookies.get('Token') != undefined){
+        rest.validationLoginIndex(true);
+    }
+    
 
     async function DBLOGIN() { 
          
         const body = {
         "email":user,
-        "pwd":password,
+        "pwd":password,      
+        }
+               
+        const USER = await fetch("https://fitbodyapi.herokuapp.com/auth",
+        {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
+        Logando(USER.status);
+        
+        const data = await USER.json();
+        Cookies.set('Token', data.token);
         
     }   
-       
-        
-        const USER = await fetch("https://fitbodyapi.herokuapp.com/auth", {method:"POST",headers:{'Content-Type': 'application/json'},  body:JSON.stringify(body)})
-        const data = await USER.json();
-        Logando(USER.status);
-        Cookies.set('Token', data);
+      
 
-    }
 
-  
-    
     useEffect(() => {
     const data = fetch("https://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
      .then((data)=>{
+         
        if(data.status == 200){
         rest.validationLoginIndex(true);
-        console.log(data.json());
+       }
+       else if(data.status != 200){
         
+        rest.validationLoginIndex(false);
        }
     }).catch((e)=>{
-
+       
     })      
     }, []);
     
     function Logando(status:number) {
         
         if(status == 200 ){
-        rest.validationLoginIndex(true);
-        setIsLoading(false);
+         rest.validationLoginIndex(true);
+         setIsLoading(false);
+         setError(false);
 
         }
-        else{
-        setIsLoading(false);
+        else if(status != 200){
+         setIsLoading(false);
+         setError(true);
         }
     }
     
@@ -98,6 +111,7 @@ export  function UserLoginProvider({children, ...rest}: UserLoginProviderProps){
             setIsLoading,
             isLoading,
             nameUser,
+            error
          
             
             }}

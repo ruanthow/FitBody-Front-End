@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import { useContext, useState } from 'react';
 import { UserLoginContexts } from '../../contexts/UserLoginContexts';
 import styled from '../../styles/components/UserLogin.module.css';
@@ -7,7 +8,7 @@ import  {LoadingScreen}  from '../LoadingScreen';
 
 export default function UserLogin(){
    
-    const {user,password,setUser, setPassword,Logando, DBLOGIN, setIsLoading,isLoading } = useContext(UserLoginContexts);
+    const {user,password,setUser, setPassword,Logando, DBLOGIN, setIsLoading, isLoading, error } = useContext(UserLoginContexts);
 
     
 
@@ -38,7 +39,13 @@ export default function UserLogin(){
                         Logar
                     </button>
                 </form>
-                <span>Não possui uma conta sem problemas <a href="/">Cadastre-se</a></span>
+                { error &&
+                    <div>
+                        <span style={{color:"red"}}>Credencias incorretas ou não existentes</span>
+                    </div>
+                }
+                
+                <span>Não possui uma conta sem problemas <Link href="/register">Cadastre-se</Link></span>
                 <div className={styled.userLoginOthersLogins}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1004px-Google_%22G%22_Logo.svg.png" alt=""/>
                 <img src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png" alt=""/>

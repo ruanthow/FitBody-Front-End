@@ -27,13 +27,19 @@ interface HomeProps{
 export default function Home(props : HomeProps) {
   const [validationLogin, setValidationLogin] = useState(false);
 
-      useEffect(()=> {
+  
+    useEffect(()=> {
      const data = fetch("https://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
      .then((data)=>{
        if(data.status == 200){
         setValidationLogin(true);
-        console.log(data.json());
+       
        }
+       else if(data.status == 401){
+        Cookies.remove('Token');
+        setValidationLogin(false);
+       }
+      
     }).catch((e)=>{
 
     })      
