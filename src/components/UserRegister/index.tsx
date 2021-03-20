@@ -31,7 +31,7 @@ export function UserRegister(){
             (<div className={styled.userRegisterBox}>
                
                 <div className={styled.userRegisterContents}>
-                <BackArrow href="/"/>
+                <div><BackArrow href="/"/></div>
                 <img src="logo.svg" alt=""/>
                 <p>Bem vindo</p>
                 <form onSubmit={(e)=>{ 

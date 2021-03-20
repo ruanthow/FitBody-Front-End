@@ -7,13 +7,13 @@
     position: relative;
    
 }
-.Container > img {
+.Container img {
     height: 40px;
     width: 40px;
 
     position: absolute;
     left: -50px;
-    top:-20px;
+    top:10px;
     
     
 }
