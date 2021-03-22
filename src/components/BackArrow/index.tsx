@@ -5,6 +5,7 @@ import Link from '../Link';
 
 interface BackArrowProps{
     href:string;
+  
 }
 
 export default function BackArrow({href}:BackArrowProps){
