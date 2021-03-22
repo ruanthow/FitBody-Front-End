@@ -8,15 +8,8 @@ export default function Profile(){
 
     
 
-    var nome = "Ruan Mendonça";
     const {level} = useContext(ChallengeContexts)
-    const {nameUser} = useContext(UserLoginContexts);
-    
-    if(nome.length > 20){
-        nome = nome.substring(0,20)
-
-    }
-
+    const {nameUser, setNameUser} = useContext(UserLoginContexts);
     
     return(
         <motion.div
@@ -32,7 +25,7 @@ export default function Profile(){
         className={styled.profileContainer}>
             <img src="https://github.com/ruanthow.png" alt="Ruan Mendonça"/>
             <div>
-                <strong>{nome}</strong>
+                <strong>{nameUser}</strong>
                 <p>
                     <img src="icons/level.svg" alt=""/>
                     Level {level}

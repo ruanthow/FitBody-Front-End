@@ -12,11 +12,14 @@ interface UserRegisterData{
     isNotName:Boolean
     isNotPassword:Boolean;
     iscreateUser:Boolean;
+    isCreateLoading:Boolean
+    
     //Hooks React///
     setName:any;
     setEmail:any;
     setPassword:any;
     setPasswordConfirm:any;
+    setIsCreateLoading:any
     ///          ////
 
     CreateUser:Function;
@@ -45,11 +48,11 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
     const [isNotName, setIsNotName] = useState(true);
     const [isNotPassword, setIsNotPassword] = useState(true);
     const [iscreateUser, setIsCreateUser] = useState(false);
-    
+    const [isCreateLoading, setIsCreateLoading] = useState(false);
 
     const regex1 = /^[a-z0-9.]+@[a-z]+\.([a-z]{2,3})$/;
     const regex2 = /^([a-zA-Z\u00C0-\u00FF]([ ])?){4,32}/;
-    const regex3 = /[a-zA-z0-9]{6,15}/g;
+    const regex3 = /^([a-z0-9A-Z]){6,15}$/;
     
     
 
@@ -115,10 +118,10 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
         const body ={
             "name":name,
             "email": email,
-            "senha": password
+            "pwd": password
         }
 
-        const create = await fetch("http://18.231.147.2:3350/user",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
+        const create = await fetch("http://fitbodyapi.herokuapp.com/users",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
         const data = await create.json();
         console.log(create);
         console.log(data);
@@ -138,12 +141,13 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
            isNotEmail,
            isNotName,
            isNotPassword,
+           isCreateLoading,
 
            setName,
            setEmail,
            setPassword,
            setPasswordConfirm,
-
+           setIsCreateLoading,
 
            CreateUser,  
            Security,

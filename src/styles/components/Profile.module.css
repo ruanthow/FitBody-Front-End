@@ -8,8 +8,8 @@
     height: 8rem;
     border-radius: 50%;
 }
-.profileContainer div{
-    
+.profileContainer > div{
+    max-width: 45%;
     margin-left: 1.5rem;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@
     color: var(--title);
 }
 .profileContainer p{
-    width: 75%;
+   
     font-size: 1rem;
     margin-top: 0.5rem;
     background: black;
