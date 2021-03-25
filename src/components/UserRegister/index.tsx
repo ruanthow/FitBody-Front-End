@@ -43,7 +43,6 @@ export function UserRegister() {
                         ValidationAll();
                         if (iscreateUser == true) {
 
-                            console.log(name, email, password);
                             setIsCreateLoading(true)
                             CreateUser();
 

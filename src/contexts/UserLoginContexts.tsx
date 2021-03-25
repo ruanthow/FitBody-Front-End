@@ -51,7 +51,7 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
     }
 
    
-        async function teste() {
+        async function UserData() {
 
             const data = await fetch("https://fitbodyapi.herokuapp.com/users", { method: "GET", headers: { 'Content-Type': 'application/json', 'authorization': `Bearer ${Cookies.get("Token")}` } })
             if (data.status == 200) {
@@ -68,7 +68,7 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
         }
      
     useEffect(() => {
-        teste()
+        UserData();
     }, []);
 
     
@@ -86,7 +86,7 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
         const data = await USER.json();
         Cookies.set('Token', data.token);
         console.log(data);
-        teste();
+        UserData();
     }
 
 
