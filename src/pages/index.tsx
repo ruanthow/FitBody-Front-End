@@ -12,6 +12,7 @@ import { ChallengeProvider } from '../contexts/ChallengeContexts'
 import { CountDownContextProvider } from '../contexts/CountDownContexts'
 import { UserLoginProvider } from '../contexts/UserLoginContexts'
 import Cookies from 'js-cookie'
+import UserEditProvider from '../contexts/UserEditContexts'
 
 
 interface HomeProps{
@@ -56,6 +57,7 @@ export default function Home(props : HomeProps) {
         currentExperience={props.currentExperience} 
         completeChallenge={props.completeChallenge}
         >
+        <UserEditProvider>
         <div className={styled.container}>
         <Head>
           <title>Inicio | Movit</title>
@@ -73,8 +75,10 @@ export default function Home(props : HomeProps) {
             <ChallangesBox/>
           </div>
         </section>
-        </CountDownContextProvider>
+        </CountDownContextProvider>   
+
       </div>
+      </UserEditProvider>
       </ChallengeProvider>}
         
       </UserLoginProvider> 

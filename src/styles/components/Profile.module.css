@@ -1,14 +1,20 @@
 .profileContainer{
     display: flex;
     align-items: center;
+
+    position: relative;
     
 }
-.profileContainer > img{
+.profileContainer > img:first-child{
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
 }
-.profileContainer > div{
+
+
+
+
+.profileContainer div:last-child{
     max-width: 45%;
     margin-left: 1.5rem;
     justify-content: center;
@@ -31,6 +37,25 @@
 }
 .profileContainer p img{
     margin-right: 0.5rem;
+}
+.EditProfile{
+    
+    margin-top: 6rem;
+    margin-left: -1rem;
+    display: flex;
+    position: absolute;
+    height: 3rem;
+    width: 4rem;
+    
+    
+}
+.EditProfile span{
+    background-color: black;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.4rem;
+    
+
 }
 @media(max-width:650px){
     .profileContainer{

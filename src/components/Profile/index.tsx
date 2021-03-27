@@ -1,17 +1,26 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ChallengeContexts } from '../../contexts/ChallengeContexts';
 import { UserLoginContexts } from '../../contexts/UserLoginContexts';
 import styled from '../../styles/components/Profile.module.css';
 import {motion} from 'framer-motion';
+import { EditContexts } from '../../contexts/UserEditContexts';
 
 export default function Profile(){
 
     
 
     const {level} = useContext(ChallengeContexts)
+    const {setIsEdit} = useContext(EditContexts);
     const {nameUser, setNameUser} = useContext(UserLoginContexts);
+    const [className, setClassName] = useState("");
+    
+    useEffect(() => {
+        console.log(className)
+    }, [className]);
+   
     
     return(
+        
         <motion.div
         initial={{x:-1000}}
         animate={{
@@ -22,8 +31,33 @@ export default function Profile(){
                 type: "spring",
               }
         }}
-        className={styled.profileContainer}>
-            <img src="https://github.com/ruanthow.png" alt="Ruan Mendonça"/>
+        className={styled.profileContainer}
+        onHoverStart={()=>{
+            
+            setClassName("EditProfile")
+        }}
+        onHoverEnd={()=>{
+            setClassName("")
+        }}
+        >
+            
+            <img 
+           
+            src="https://github.com/ruanthow.png" 
+            alt="Ruan Mendonça"
+            />
+
+            <motion.div
+            className={styled.EditProfile}
+            whileHover={{scale:1.1}}
+            whileTap={{scale:1.2}} 
+            onClick={()=>{
+                setIsEdit(true)
+            }}
+            >
+                {className == "EditProfile" && <span>Editar Perfil</span>}
+            </motion.div>
+            
             <div>
                 <strong>{nameUser}</strong>
                 <p>

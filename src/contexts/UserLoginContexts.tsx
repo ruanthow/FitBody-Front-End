@@ -45,7 +45,6 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
     const [error, setError] = useState(false);
 
 
-
     if (Cookies.get('Token') != undefined) {
         rest.validationLoginIndex(true);
     }
@@ -53,7 +52,7 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
    
         async function UserData() {
 
-            const data = await fetch("https://fitbodyapi.herokuapp.com/users", { method: "GET", headers: { 'Content-Type': 'application/json', 'authorization': `Bearer ${Cookies.get("Token")}` } })
+            const data = await fetch("https://fitbodyapi.herokuapp.com/users", { method: "GET", headers: { 'Content-Type': 'application/json', 'authorization': `Bearer ${Cookies.get("Token")} `,'Hass':'ok' } })
             if (data.status == 200) {
                 rest.validationLoginIndex(true);
             }
@@ -66,7 +65,8 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
             setNameUser(UserData.name)
             console.log(UserData);
         }
-     
+    
+      
     useEffect(() => {
         UserData();
     }, []);
