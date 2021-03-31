@@ -1,3 +1,4 @@
+
 .profileContainer{
     display: flex;
     align-items: center;
@@ -57,6 +58,7 @@
     
 
 }
+
 @media(max-width:650px){
     .profileContainer{
         margin-top: 2rem;

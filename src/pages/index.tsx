@@ -10,7 +10,7 @@ import UserLogin from '../components/UserLogin'
 import {GetServerSideProps} from 'next'
 import { ChallengeProvider } from '../contexts/ChallengeContexts'
 import { CountDownContextProvider } from '../contexts/CountDownContexts'
-import { UserLoginProvider } from '../contexts/UserLoginContexts'
+import { UserLoginContexts, UserLoginProvider } from '../contexts/UserLoginContexts'
 import Cookies from 'js-cookie'
 import UserEditProvider from '../contexts/UserEditContexts'
 
@@ -27,9 +27,9 @@ interface HomeProps{
 
 export default function Home(props : HomeProps) {
   const [validationLogin, setValidationLogin] = useState(false);
-
   
     useEffect(()=> {
+     
      const data = fetch("https://fitbodyapi.herokuapp.com/users",{method:"GET",headers:{'Content-Type': 'application/json','authorization':`Bearer ${Cookies.get("Token")}`}})
      .then((data)=>{
        if(data.status == 200){

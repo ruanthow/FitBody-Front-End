@@ -31,7 +31,7 @@ export default function UserLogin(){
                         }}/>
                     </div>
                     <div className={styled.userLoginInput}>
-                        <input  name="name" placeholder="SENHA" onChange={(e)=>{
+                        <input type="password" name="name" placeholder="SENHA" onChange={(e)=>{
                             setPassword(e.target.value);
                         }}/>
                     </div>

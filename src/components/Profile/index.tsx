@@ -13,9 +13,8 @@ export default function Profile(){
     const {setIsEdit} = useContext(EditContexts);
     const {nameUser, setNameUser} = useContext(UserLoginContexts);
     const [className, setClassName] = useState("");
-    
     useEffect(() => {
-        console.log(className)
+    
     }, [className]);
    
     
@@ -55,7 +54,7 @@ export default function Profile(){
                 setIsEdit(true)
             }}
             >
-                {className == "EditProfile" && <span>Editar Perfil</span>}
+                {className == "EditProfile" && <img src="icons/edit.svg"/>}
             </motion.div>
             
             <div>

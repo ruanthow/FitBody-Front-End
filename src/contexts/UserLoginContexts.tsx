@@ -12,7 +12,6 @@ interface UserLoginData {
     password: string;
     setPassword: any;
 
-
     Logando: Function;
     DBLOGIN: Function;
 
@@ -22,7 +21,8 @@ interface UserLoginData {
     setNameUser:any;
     error: boolean;
 
-
+    ExpDB:number;
+    setExpDB:any;
 
 
 }
@@ -43,7 +43,8 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
     const [isLoading, setIsLoading] = useState(false);
     const [nameUser, setNameUser] = useState();
     const [error, setError] = useState(false);
-
+    const [ExpDB, setExpDB] = useState();
+    //
 
     if (Cookies.get('Token') != undefined) {
         rest.validationLoginIndex(true);
@@ -63,13 +64,16 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
             
             const UserData = await data.json();
             setNameUser(UserData.name)
-            console.log(UserData);
+            setExpDB(UserData.exp)
+            
+            
         }
     
       
     useEffect(() => {
         UserData();
-    }, []);
+        
+    }, [ExpDB]);
 
     
     async function DBLOGIN() {
@@ -125,8 +129,10 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
                 isLoading,
                 nameUser,
                 error,
-                setNameUser
-
+                setNameUser,
+                ExpDB, 
+                setExpDB
+               
 
             }}
         >

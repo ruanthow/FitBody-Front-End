@@ -1,8 +1,9 @@
-import {createContext, useState, ReactNode, useContext, useEffect} from 'react';
+import {createContext, useState, ReactNode, useContext, useEffect, useCallback} from 'react';
 import Cookies from 'js-cookie';
 import challengeBase from '../../challenge.json';
 import { LevelUpModal } from '../components/LevelUpModal';
 import EditProfile from '../components/EditProfile';
+import { UserLoginContexts } from './UserLoginContexts';
 
 
 interface ChallengeProps{
@@ -39,30 +40,28 @@ export const ChallengeContexts = createContext({} as ChallengeData);
 
 export function ChallengeProvider({children, ...rest}:ChallengeProviderProps){
 
+    const {ExpDB} = useContext(UserLoginContexts);
+
     const [level, setLevel] = useState(rest.level ?? 1);
     const [currentExperience, setCurrenteExperience] = useState(rest.currentExperience ?? 0);
     const [completeChallenge, setCompleteChallenge] = useState(rest.completeChallenge ?? 0);
     const [isLevelUpModal, setIsLevelUpModal] = useState(false);
+    const [LoadingData,setLoadingData] = useState(true);
     
-    
+   
 
     const [activeChallenge, setActiveChallenge] = useState(null);
 
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
 
-    useEffect(()=>{
-        Notification.requestPermission();
-    },[])
-
-    useEffect(()=>{
-        Cookies.set('level', String(level));
-        Cookies.set('completeChallenge', String(completeChallenge));
-        Cookies.set('currentExperience', String(currentExperience));
-
-    },[level, completeChallenge, currentExperience])
-
+   useEffect(() => {
     
+      DataDB()
+      console.log(LoadingData)
+   }, [DataDB]);
+    
+   
 
     function levelUp(){
         setLevel(level + 1);
@@ -118,7 +117,36 @@ export function ChallengeProvider({children, ...rest}:ChallengeProviderProps){
         
     }
 
+    function DataDB(){
+        if(LoadingData){
+            setCurrenteExperience(ExpDB)
+            setTimeout(() => {
+                setLoadingData(false)
+            }, 1000);
+        }
+        
 
+        if(currentExperience > experienceToNextLevel){
+            setCurrenteExperience(ExpDB)
+            setLevel(level+1)
+            setLoadingData(false)
+        }
+        
+        
+    }
+   
+    
+    useEffect(()=>{
+        
+        Cookies.set('level', String(level));
+        Cookies.set('completeChallenge', String(completeChallenge));
+        Cookies.set('currentExperience', String(currentExperience));
+        
+        Notification.requestPermission();
+        
+    },[level, completeChallenge, currentExperience])
+   
+    
 
     return(
         <ChallengeContexts.Provider 

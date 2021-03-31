@@ -15,8 +15,9 @@
     position: relative;
     height: 46rem;
     width: 40rem;
-    background: rgb(26, 25, 25);
+    background: white;
 
+    
 
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.685);
 
@@ -39,26 +40,20 @@
     justify-content: center;
     align-items: center;
     
-   background: url(../../../public/background-profile.jpg);
+   
    background-position: center;
    background-size: cover;
 
+   
+
 }
 .Profile{
-    
-    display: flex;
+
     position: relative;
-    border-radius: 0;
-}
-.Header > img {
     
-    margin-top:2rem;
-    margin-left: 2rem;
-    position: fixed;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0;
 }
+
+   
 .spanLine{
     width: 100%;
     border: 0;
@@ -74,7 +69,7 @@
     color: black;
 }
 .UserName h2{
-    color: #fff;
+    color: #000;
 }
 .Forms{
     margin: 4rem;
@@ -85,15 +80,15 @@
     border-radius: 5px;
 }
 .Forms h3{
-    font-size: 12pt;
+    font-size: 1rem;
     
-    color: #000;
+    color: #fff;
     
 }
 .Input{
     height: 3rem;
     width: 100%;
-    color: black;
+    color: fff;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -104,9 +99,10 @@
 
 .BoxInput{
     border-radius: 5px;
-    background: linear-gradient(-45deg, rgb(248, 232, 2) 30%, rgb(255, 156, 8));
+    background: var(--black);
     margin: 1rem;
     padding-left: 1rem;
+   
 }
 .Button{
    
@@ -122,8 +118,8 @@
     transition: 0.7s ease linear;
 }
 .Button:hover{
-    color: #fff;
-    background: black;
+    color: #000;
+    background: linear-gradient(-45deg, rgb(248, 232, 2) 30%, rgb(255, 156, 8));
     cursor: pointer;
 }
 .ChangePassword{
@@ -131,12 +127,13 @@
     
 }
 .Contents p{
+    color: #000;
     font-size: 0.9rem;
     
 }
 .InputPassword{
     display: flex;
-    height: 2rem;
+    height: 3rem;
     align-items: center;
     justify-content: center;
     
@@ -147,7 +144,7 @@
     margin-top: 3rem;
     border-radius: 5px;
     
-    background: #fff;
+    background: rgb(209, 208, 208);
     color: black;
 
     user-select: none;
@@ -155,8 +152,8 @@
     transition: 0.7s ease linear;
 }
 .InputPassword:hover{
-    color: #fff;
-    background: #000;
+    color: #000;
+    background: linear-gradient(-45deg, rgb(248, 232, 2) 30%, rgb(255, 156, 8));
     cursor: pointer;
 }
 .ExitButton{
@@ -174,11 +171,8 @@
 
    
 }
-.UploadPhoto{
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.UploadContainer{
+    
     position: absolute;
 
     display: flex;
@@ -186,9 +180,122 @@
     justify-content: center;
     background: black;
 
-    margin: 2rem;
-    margin-top:6rem;
+    
+    margin: 4rem;
+    margin-top:-3rem;
     height: 30rem;
-    width: 35rem;
+    width: 30rem;
+
+    padding: 3rem;
+    border-radius: 5px;
    
+}
+.UploadInput > img{
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.UploadInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    width: 55%;
+    height: 3rem;
+   
+    border-radius: 5px;
+
+    background: white;
+    color: #000;
+    
+    font-weight: 500;
+    transition: 0.7s ease linear;
+}
+.Photo{
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+
+    
+    
+}
+.overlayPhoto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+
+    background: rgba(192, 192, 192, 0.63);
+    width: 100%;
+    height: 0rem;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    overflow: hidden;
+    transition: 0.1s ease;
+}
+.overlayPhoto > img{
+    border-radius: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.Photo:hover .overlayPhoto{
+    height:3.2rem;
+}
+.clickedArea{
+    cursor: pointer;
+}
+.ExitApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ButtonExit{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+    background: rgba(192, 192, 192, 0.63);
+    color: #000;
+    font-weight: 500;
+    font-size: 1.3rem;
+
+    margin: 3rem;
+    width: 30%;
+    height: 3rem;
+
+    border-radius: 5px;
+}
+.ButtonExit:hover{
+    cursor: pointer;
+    background: linear-gradient(-45deg, rgb(248, 232, 2) 30%, rgb(255, 156, 8));
+  
+}
+.PhotoConfirm{
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+    z-index: 9999;
+    position: absolute;
+    background: red;
+}
+.PhotoContentes{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.PhotoContentes span{
+    margin-bottom: 1rem;
 }
