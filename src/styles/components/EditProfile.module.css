@@ -287,7 +287,7 @@
     justify-content: center;
 
    
-    z-index: 9999;
+    z-index: 2;
     position: absolute;
     background: red;
 }
@@ -298,4 +298,102 @@
 }
 .PhotoContentes span{
     margin-bottom: 1rem;
+}
+.Preview{
+    z-index: 3;
+    flex: 1;
+    position: fixed;
+  
+    display: grid;
+    grid-template-rows: 5rem 20rem 5rem;
+    grid-gap: 2rem;
+    
+    padding: 5rem;
+    padding-top: 8rem;
+
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(136, 136, 136, 0.507);
+}
+.PreviewPhoto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PreviewPhoto img{
+    
+
+    height: 20rem;
+    width: 20rem;
+    box-shadow: 0px 0px 60px black;
+    border-radius: 50%;
+}
+.ChooseImage{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.ChooseImage label{
+    height: 5rem;
+    width:20rem;
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: black;
+}
+.ButtonArea{
+    
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: 10rem 10rem;
+    justify-content: center;
+    
+   
+}
+.ButtonArea div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    user-select: none;
+    height: 3rem;
+    width: 10rem;
+    background: rgb(0, 0, 0);
+    color: #fff;
+    font-weight: 600;
+
+    border-radius: 5px;
+    
+
+    cursor: pointer;
+}
+.ButtonArea div:hover{
+    background:linear-gradient(-45deg, rgb(248, 232, 2) 30%, rgb(255, 156, 8));
+    color: #000;
+}   
+.ButtonArea div:last-child{
+    background: #fff;
+    color: #000;
+}
+.ButtonArea div:last-child:hover{
+    background: red;
+    color: #fff;
+    
+}
+.ErrorFormatPhoto{
+    background: rgba(0, 0, 0, 0.342);
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    font-weight: 500;
+  
 }
