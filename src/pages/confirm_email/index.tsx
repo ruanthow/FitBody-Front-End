@@ -1,4 +1,5 @@
-
+import { route } from 'next/dist/next-server/server/router';
+import { useRouter } from 'next/router';
 
 
 
@@ -13,18 +14,17 @@ export default function ConfirmEmail(){
 
 export async function getServerSideProps(context) {
 
-var token = "teste";
- const body = {
+  const router = useRouter();
+  var token = context.query.token;
+  const body = {
 
       "acess_account": token
 
   }
  
-  
-    const teste = context.resolvedUrl;
-    console.log(teste);
-    const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify((body))})
-    console.log(await apiVerification.json());
+    const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify`", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify((body))})
+    console.log(await token);
+    router.push("/");
     return { 
      props:{
       
