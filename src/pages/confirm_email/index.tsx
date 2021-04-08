@@ -4,22 +4,21 @@ import styled from '../../styles/pages/Confirm_Email.module.css';
 
 
 
-export default function ConfirmEmail(){
+export default function ConfirmEmail({teste}){
   const router = useRouter();
-  const a = true;
+
+
+  
   useEffect(() => {
       setTimeout(() => {
          router.push('/'); 
-      }, 1000);
-       
-    
+      }, 2000);
   }, []);
   
     return(
         <div className={styled.Container}>
           <div className={styled.Contents}>
-            <h3>Sua conta foi verificada com Sucesso</h3>
-              
+            <h3>{teste.error}</h3>  
           </div>
         </div>
        
@@ -36,18 +35,18 @@ export async function getServerSideProps(context) {
           
         const body = {
 
-            "acess_account": token
+            "access_account": token
 
         }
+       
+          const apiVerification = await fetch("http://fitbodyapi.herokuapp.com/verify/", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify(body) } )
+          const teste = await apiVerification.json()
+
         
-          const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify((body))})
-      
-
-      
-
+        
     return { 
      props:{
-      apiVerification,
+      teste
     }
   }
 }
