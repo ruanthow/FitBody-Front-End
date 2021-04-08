@@ -31,14 +31,20 @@ export async function getServerSideProps(context) {
 
   
   var token = context.query.token;
-  const body = {
 
-      "acess_account": token
+      async function Teste() {
+          
+        const body = {
 
-  }
-  
-    const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify((body))})
-    
+            "acess_account": token
+
+        }
+        
+          const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify((body))})
+      }
+
+      Teste();
+      
     return { 
      props:{
       
