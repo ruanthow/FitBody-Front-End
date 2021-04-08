@@ -8,7 +8,6 @@ export default function ChallangesBox(){
     
     const {activeChallenge, challengeFail, challengeComplete} = useContext(ChallengeContexts);
     const {StartCountDown, ResetCountDown} = useContext(CountDownContext);
-    const [widthScreen, setWidthScreen] = useState(0);
     const [IsCloseBox, setIsCloseBox] = useState(false); 
     var css;
 

@@ -46,9 +46,7 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
     const [ExpDB, setExpDB] = useState();
     //
 
-    if (Cookies.get('Token') != undefined) {
-        rest.validationLoginIndex(true);
-    }
+   
 
    
         async function UserData() {
@@ -57,8 +55,8 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
             if (data.status == 200) {
                 rest.validationLoginIndex(true);
             }
-            else if (data.status != 200) {
-
+            else{
+               
                 rest.validationLoginIndex(false);
             }
             
@@ -83,8 +81,8 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
             "pwd": password,
         }
 
-        const USER = await fetch("https://fitbodyapi.herokuapp.com/auth",
-            { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        const USER = await fetch("https://fitbodyapi.herokuapp.com/auth",{ method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        console.log(USER.status)
         Logando(USER.status);
 
         const data = await USER.json();
@@ -98,14 +96,16 @@ export function UserLoginProvider({ children, ...rest }: UserLoginProviderProps)
     
 
     function Logando(status: number) {
-
-        if (status == 200) {
+        console.log(status)
+        if (status === 200) {
             rest.validationLoginIndex(true);
             setIsLoading(false);
             setError(false);
 
         }
-        else if (status != 200) {
+        else if (status === 401) {
+           
+            rest.validationLoginIndex(false)
             setIsLoading(false);
             setError(true);
         }

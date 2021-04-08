@@ -3,9 +3,11 @@ import styled from '../../styles/pages/Register.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { LoadingScreen } from '../LoadingScreen';
 import BackArrow from '../BackArrow';
+import { useRouter } from 'next/router'
 
 export function UserRegister() {
-
+   
+    const router = useRouter();
     const {
         name,
         passwordConfirm,
@@ -21,10 +23,17 @@ export function UserRegister() {
         isNotName,
         isNotPassword,
         setIsCreateLoading,
-        isCreateLoading
+        isCreateLoading,
+        status
 
     } = useContext(UserRegisterContexts);
 
+    function Redirection() {
+        setTimeout(() => {
+            router.push("/");
+        }, 1500);
+        
+    }
 
     return (
 
@@ -40,6 +49,7 @@ export function UserRegister() {
                     <img src="logo.svg" alt="" />
                     <p>Bem vindo</p>
                     <form onSubmit={(e) => {
+                        e.preventDefault()
                         ValidationAll();
                         if (iscreateUser == true) {
 
@@ -132,18 +142,40 @@ export function UserRegister() {
 
                     <div className={styled.loadingRegisterBox}>
                         <div className={styled.loadingRegisterContainte}>
+                            {
+                              status == 201 && 
+                              <div>
+                                  Verifique seu email para obter acesso
+                                  {Redirection()}
+                              </div>
+                                
+                              ||
 
-                            <div className={styled.svgLoading}>
+                              status == 0 && 
+                              
+                              <div className={styled.svgLoading}>
                                 <svg version="1.1" id="L9" height="350px" width="350px"
                                     viewBox="0 0 100 100">
                                     <path fill="#ff0707" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
 
                                     </path>
                                 </svg>
-                            </div>
                                 Cadastrando...
+                                </div>
+
+                              || 
+                              
+                              status == 400 && 
+
+                              <div>
+                                  Error ao Cadatrar Email
+                                  {Redirection()}
+                              </div>
+                            }                    
                         </div>
+                            
                     </div>
+                    
                 )
             }
         </div>

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
 
 
 
@@ -7,6 +7,8 @@ interface UserRegisterData{
     email:string;
     password:string;
     passwordConfirm:string
+    status:Number;
+    
     
     isNotEmail:Boolean;
     isNotName:Boolean
@@ -42,7 +44,7 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-
+    const [status, setStatus] = useState(0);
 
     const [isNotEmail, setIsNotEmail] = useState(true)
     const [isNotName, setIsNotName] = useState(true);
@@ -52,7 +54,7 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
 
     const regex1 = /^[a-z0-9.]+@[a-z]+\.([a-z]{2,3})$/;
     const regex2 = /^([a-zA-Z\u00C0-\u00FF]([ ])?){4,32}/;
-    const regex3 = /^([a-z0-9A-Z]){6,15}$/;
+    const regex3 = /^([a-z0-9A-Z]){6,15}/;
     
     
 
@@ -121,13 +123,18 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
             "pwd": password
         }
 
-        const create = await fetch("http://fitbodyapi.herokuapp.com/users",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
+        const create = await fetch("http://fitbodyapi.herokuapp.com/register",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
+        setStatus(create.status);
+        console.log(create)
+        console.log(status);
         const data = await create.json();
-        console.log(create);
-        console.log(data);
+        
 
     }
 
+    useEffect(() => {
+        console.log(status)
+    }, [status])
 
     return(
        <UserRegisterContexts.Provider
@@ -136,6 +143,8 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
            email,
            password,
            passwordConfirm,
+           status,
+           
 
            iscreateUser,
            isNotEmail,
@@ -152,6 +161,8 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
            CreateUser,  
            Security,
            ValidationAll,
+
+           
        }}
        >
            {children}

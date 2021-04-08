@@ -58,7 +58,7 @@ export function ChallengeProvider({children, ...rest}:ChallengeProviderProps){
    useEffect(() => {
     
       DataDB()
-      console.log(LoadingData)
+     
    }, [DataDB]);
     
    
