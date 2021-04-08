@@ -39,7 +39,7 @@ export async function getServerSideProps(context) {
 
         }
        
-          const apiVerification = await fetch("http://fitbodyapi.herokuapp.com/verify/", {method:"POST", headers:{'Content-Type' : 'aplication/json'}, body:JSON.stringify(body) } )
+          const apiVerification = await fetch("https://fitbodyapi.herokuapp.com/verify/",{ method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } )
           const teste = await apiVerification.json()
 
         
