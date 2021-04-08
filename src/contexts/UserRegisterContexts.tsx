@@ -123,7 +123,7 @@ export function UserRegisterProvider({children, ...rest}: UserRegisterProvider){
             "pwd": password
         }
 
-        const create = await fetch("http://fitbodyapi.herokuapp.com/register",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
+        const create = await fetch("https://fitbodyapi.herokuapp.com/register",{method:"POST",headers:{'Content-Type': 'application/json'}, body:JSON.stringify(body)})
         setStatus(create.status);
         console.log(create)
         console.log(status);
